@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+   <div class="navSide_L">
+      <span>
+         <a href="/index">Home</a> / <a href="/blog">Blogs</a>
+      </span>
+   </div>
+   <div class="navSide_R">
+      {% if sessionCheck == "True" %}
+      <a class="rightNav2L" href="/logout">Logout</a>
+      {% else %}
+      <a class="rightNav2L" href="/login">Login</a>
+      {% endif %}
+   </div>
+</div>
+
+<div class="blogContainer">
+   <h1>{{oneBlog.title}}</h1>
+   <p>{{oneBlog.body}}</p>
+   <p>Posted by: {{oneUser.username}}</p>
+</div>
+
+
+{% endblock %}

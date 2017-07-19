@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+   <div class="navSide_L">
+      <span>
+         <a href="/index">Home</a> / <a class="unClickable" href="/blog">Blogs</a>
+      </span>
+   </div>
+   <div class="navSide_R">
+      {% if sessionCheck == "True" %}
+      <a class="rightNav2L" href="/logout">Logout</a>
+      {% else %}
+      <a class="rightNav2L" href="/login">Login</a>
+      {% endif %}
+   </div>
+</div>
+<div class="blogContainer">
+   <h1>Build a Blog</h1>
+   {% if sessionCheck == "True" %}
+   <p><a href="/newpost"><button>Create New Blog</button></a></p>
+   {% endif %}
+   {% for blog in blogList: %}
+   <a href="/blog?id={{blog.blog_id}}">{{blog.title}}</a>
+   <p>{{blog.body}}</p>
+   <p>Posted by: {{blog.username}}</p>
+   <hr>
+   {% endfor %}
+</div>
+
+{% endblock %}
