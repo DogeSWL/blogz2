@@ -1,4 +1,5 @@
 from flask import request, render_template, session
+from flask_sqlalchemy import SQLAlchemy
 from app import app, db
 from models import User, Blog
 
