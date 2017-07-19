@@ -1,6 +1,7 @@
 from flask import request, render_template, session
-from models import User, Blog
 from app import app, db
+from models import User, Blog
+
 
 def get_blogData_all():
     return db.engine.execute('''SELECT user.id AS id, user.username AS username, blog.id as blog_id, blog.title as title, blog.body as body
