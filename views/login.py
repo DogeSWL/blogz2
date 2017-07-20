@@ -33,9 +33,9 @@ def login():
             # if not encoded will cause =>
             # TypeError: Unicode-objects must be encoded before hashing
             # testpw = str.encode(password)
-            testpw = password.encode('utf-8')
+            testpw = str.encode(password)
             # testsalt = str.encode(user.hashSalt)
-            testsalt = (user.hashSalt).encode('utf-8')
+            testsalt = (user.hashSalt).encode()
             testhashpw = bcrypt.hashpw(testpw, testsalt)
 
             # convert from bytes to str
