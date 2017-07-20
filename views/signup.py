@@ -47,8 +47,7 @@ def signup():
             # generate salt
             pwdSalt = bcrypt.gensalt()
             # hash password
-            # hashed = bcrypt.hashpw(str.encode(su_password),pwdSalt)
-            hashed = bcrypt.hashpw(su_password,pwdSalt)
+            hashed = bcrypt.hashpw(str.encode(su_password),pwdSalt)
 
             user = User(username=su_username, hashSalt=pwdSalt, hashpwd=hashed)
             db.session.add(user)

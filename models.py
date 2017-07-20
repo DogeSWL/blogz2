@@ -3,10 +3,8 @@ from app import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True)
-    # hashSalt = db.Column(db.String(255))
-    # hashpwd = db.Column(db.String(255))
-    hashSalt = db.Column(db.Binary(255))
-    hashpwd = db.Column(db.Binary(255))
+    hashSalt = db.Column(db.String(255))
+    hashpwd = db.Column(db.String(255))
     blogs = db.relationship('Blog', backref='owner')
 
     def __init__(self, username, hashSalt, hashpwd):
