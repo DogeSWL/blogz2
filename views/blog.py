@@ -20,34 +20,34 @@ def blog():
 
     blog = Blog.query.all()
 
+    # if there is no blogs in db, render blank blog
     if not blog:
         return render_template('blog.html')
-
-
-
-    blogID = request.args.get('id') # extract the value of id
-    userID = request.args.get('user')
-
-    if userID:
-        blogData = Blog.query.filter_by(owner_id=userID).all()
-        oneUser = User.query.filter_by(id=userID).first()
-
-        return render_template('singleUser.html',
-                                blogData=blogData,
-                                oneUser=oneUser,
-                                sessionCheck=checkSession())
-
-    if blogID == None: # if value of id returns None render template blog.html
-
-
-        return render_template('blog.html',
-                                blogList=get_blogData_all(),
-                                sessionCheck=checkSession())
+        
     else:
-        oneBlog = Blog.query.filter_by(id=blogID).first()
-        oneUser = User.query.filter_by(id=oneBlog.owner_id).first()
+        blogID = request.args.get('id') # extract the value of id
+        userID = request.args.get('user')
 
-        return render_template('singleBlog.html',
-                                oneBlog=oneBlog,
-                                oneUser=oneUser,
-                                sessionCheck=checkSession())
+        if userID:
+            blogData = Blog.query.filter_by(owner_id=userID).all()
+            oneUser = User.query.filter_by(id=userID).first()
+
+            return render_template('singleUser.html',
+                                    blogData=blogData,
+                                    oneUser=oneUser,
+                                    sessionCheck=checkSession())
+
+        if blogID == None: # if value of id returns None render template blog.html
+
+
+            return render_template('blog.html',
+                                    blogList=get_blogData_all(),
+                                    sessionCheck=checkSession())
+        else:
+            oneBlog = Blog.query.filter_by(id=blogID).first()
+            oneUser = User.query.filter_by(id=oneBlog.owner_id).first()
+
+            return render_template('singleBlog.html',
+                                    oneBlog=oneBlog,
+                                    oneUser=oneUser,
+                                    sessionCheck=checkSession())
