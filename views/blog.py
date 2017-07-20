@@ -17,6 +17,14 @@ def checkSession():
 
 @app.route('/blog', methods=['GET'])
 def blog():
+
+    blog = Blog.query.al()
+
+    if not blog:
+        return render_template('blog.html')
+
+
+
     blogID = request.args.get('id') # extract the value of id
     userID = request.args.get('user')
 
