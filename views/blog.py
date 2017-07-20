@@ -18,7 +18,7 @@ def checkSession():
 @app.route('/blog', methods=['GET'])
 def blog():
 
-    blog = Blog.query.al()
+    blog = Blog.query.all()
 
     if not blog:
         return render_template('blog.html')
