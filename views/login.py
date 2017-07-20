@@ -33,8 +33,8 @@ def login():
             # if not encoded will cause =>
             # TypeError: Unicode-objects must be encoded before hashing
             testpw = str.encode(password)
-            # testsalt = str.encode(user.hashSalt)
-            testhashpw = bcrypt.hashpw(testpw, user.hashSalt)
+            testsalt = str.encode(user.hashSalt)
+            testhashpw = bcrypt.hashpw(testpw, testsalt)
 
             # convert from bytes to str
             salted_inputpwd = testhashpw.decode('utf-8')
