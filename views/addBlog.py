@@ -8,7 +8,7 @@ def addBlog():
     new_blogEntry = request.form['blog_NewEntry']
 
     # grab current user
-    owner = User.query.filter_by(username=session['username']).first()
+    owner = Users.query.filter_by(username=session['username']).first()
 
     title_Error = ''
     entry_Error = ''
@@ -23,7 +23,7 @@ def addBlog():
                                 title_Error = title_Error,
                                 entry_Error = entry_Error)
     else:
-        blog = Blog(title=new_blogTitle, body=new_blogEntry, owner_id=owner.id)
+        blog = Blogs(title=new_blogTitle, body=new_blogEntry, owner_id=owner.id)
         db.session.add(blog)
         db.session.commit()
 

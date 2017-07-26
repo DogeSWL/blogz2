@@ -32,7 +32,7 @@ def newpost_page():
 
 @app.route('/index')
 def home():
-    all_users = User.query.all()
+    all_users = Users.query.all()
 
     return render_template('index.html',
                             all_users=all_users,

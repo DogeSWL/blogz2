@@ -16,7 +16,7 @@ def checkSession():
 
 @app.route('/blog', methods=['GET'])
 def blog():
-    blog = Blog.query.all()
+    blog = Blogs.query.all()
         # user = User.query.all()
 
     # if there is no blogs in db, render blank blog
@@ -28,8 +28,8 @@ def blog():
         userID = request.args.get('user')
 
         if userID:
-            blogData = Blog.query.filter_by(owner_id=userID).all()
-            oneUser = User.query.filter_by(id=userID).first()
+            blogData = Blogs.query.filter_by(owner_id=userID).all()
+            oneUser = Users.query.filter_by(id=userID).first()
 
             return render_template('singleUser.html',
                                     blogData=blogData,
@@ -43,8 +43,8 @@ def blog():
                                     blogList=get_blogData_all(),
                                     sessionCheck=checkSession())
         else:
-            oneBlog = Blog.query.filter_by(id=blogID).first()
-            oneUser = User.query.filter_by(id=oneBlog.owner_id).first()
+            oneBlog = Blogs.query.filter_by(id=blogID).first()
+            oneUser = Users.query.filter_by(id=oneBlog.owner_id).first()
 
             return render_template('singleBlog.html',
                                     oneBlog=oneBlog,

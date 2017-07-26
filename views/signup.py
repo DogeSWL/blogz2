@@ -16,7 +16,7 @@ def signup():
         su_password = request.form['password']
         su_vpassword = request.form['verifyPass']
 
-        user_check = User.query.filter_by(username=su_username).first()
+        user_check = Users.query.filter_by(username=su_username).first()
 
         # checks if there is input for username and if username is already in db
         # if both are true, 'username taken' error would display
@@ -51,7 +51,7 @@ def signup():
 
             hashed = bcrypt.hashpw(su_password.encode(),pwdSalt)
 
-            user = User(username=su_username, hashSalt=pwdSalt, hashpwd=hashed)
+            user = Users(username=su_username, hashSalt=pwdSalt, hashpwd=hashed)
             db.session.add(user)
             db.session.commit()
             return redirect('/login')
