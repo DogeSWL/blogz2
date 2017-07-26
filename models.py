@@ -6,7 +6,7 @@ class Users(db.Model):
     hashSalt = db.Column(db.Binary(120))
     hashpwd = db.Column(db.Binary(120))
 
-    blogs = db.relationship('Blogs', backref='owner')
+    Blogs = db.relationship('Blogs', backref='owner')
 
     def __init__(self, username, hashSalt, hashpwd):
         self.username = username
