@@ -16,7 +16,7 @@ def checkSession():
 
 @app.route('/blog', methods=['GET'])
 def blog():
-        blog = Blog.query.all()
+    blog = Blog.query.all()
         # user = User.query.all()
 
     # if there is no blogs in db, render blank blog
