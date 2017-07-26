@@ -1,5 +1,5 @@
 from flask import request, redirect, render_template
-from models import User
+from models import Users
 from app import app, db
 
 import bcrypt

@@ -1,11 +1,11 @@
 from app import db
 
-class User(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(120), unique=True)
     hashSalt = db.Column(db.Binary(120))
     hashpwd = db.Column(db.Binary(120))
-    
+
     blogs = db.relationship('Blog', backref='owner')
 
     def __init__(self, username, hashSalt, hashpwd):
@@ -14,7 +14,7 @@ class User(db.Model):
         self.hashpwd = hashpwd
 
 
-class Blog(db.Model):
+class Blogs(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     body = db.Column(db.String(120))

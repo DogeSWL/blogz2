@@ -1,6 +1,6 @@
 from flask import request, redirect, render_template, session
 from app import app
-from models import User
+from models import Users
 
 import bcrypt
 

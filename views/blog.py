@@ -1,13 +1,10 @@
 from flask import request, render_template, session
 from flask_sqlalchemy import SQLAlchemy
 from app import app, db
-from models import User, Blog
+from models import Users, Blogs
 
 def get_blogData_all():
-    # blog = Blog.query.all()
-    # user = User.query.all()
-    # , User.username AS username, Blog.id as blog_id, Blog.title as title, Blog.body as body
-    return db.engine.execute("""SELECT User.id AS id
+    return db.engine.execute("""SELECT User.id AS id, User.username AS username, Blog.id as blog_id, Blog.title as title, Blog.body as body
                                 FROM User
                                 LEFT JOIN Blog ON User.id = Blog.owner_id""")
 
@@ -19,6 +16,8 @@ def checkSession():
 
 @app.route('/blog', methods=['GET'])
 def blog():
+        blog = Blog.query.all()
+        # user = User.query.all()
 
     # if there is no blogs in db, render blank blog
     if not blog:

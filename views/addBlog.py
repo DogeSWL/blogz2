@@ -1,5 +1,5 @@
 from flask import request, redirect, render_template, session
-from models import User, Blog
+from models import Users, Blogs
 from app import app, db
 
 @app.route('/addBlog', methods=['POST'])
