@@ -4,11 +4,11 @@ from app import app, db
 from models import User, Blog
 
 def get_blogData_all():
-    blog = Blog.query.all()
-    user = User.query.all()
-    return db.engine.execute('''SELECT user.id AS id, user.username AS username, blog.id as blog_id, blog.title as title, blog.body as body
-                                FROM blog
-                                LEFT JOIN user ON user.id = blog.owner_id''')
+    # blog = Blog.query.all()
+    # user = User.query.all()
+    return db.engine.execute('''SELECT User.id AS id, User.username AS username, Blog.id as blog_id, Blog.title as title, Blog.body as body
+                                FROM Blog
+                                LEFT JOIN User ON user.id = blog.owner_id''')
 
 def checkSession():
     if session:
