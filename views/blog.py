@@ -3,11 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from app import app, db
 from models import User, Blog
 
-
-blog = Blog.query.all()
-user = User.query.all()
-
 def get_blogData_all():
+    blog = Blog.query.all()
+    user = User.query.all()
     return db.engine.execute('''SELECT user.id AS id, user.username AS username, blog.id as blog_id, blog.title as title, blog.body as body
                                 FROM blog
                                 LEFT JOIN user ON user.id = blog.owner_id''')
