@@ -1,5 +1,5 @@
 from flask import request, redirect, flash, render_template, session
-from app import app, db
+from app import app, db, SECRET_KEY
 from models import User, Blog
 
 # importing views
