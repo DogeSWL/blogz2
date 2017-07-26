@@ -4,6 +4,9 @@ from app import app, db
 from models import User, Blog
 
 
+blog = Blog.query.all()
+user = User.query.all()
+
 def get_blogData_all():
     return db.engine.execute('''SELECT user.id AS id, user.username AS username, blog.id as blog_id, blog.title as title, blog.body as body
                                 FROM blog
@@ -18,12 +21,10 @@ def checkSession():
 @app.route('/blog', methods=['GET'])
 def blog():
 
-    blog = Blog.query.all()
-
     # if there is no blogs in db, render blank blog
     if not blog:
         return render_template('blog.html')
-        
+
     else:
         blogID = request.args.get('id') # extract the value of id
         userID = request.args.get('user')
